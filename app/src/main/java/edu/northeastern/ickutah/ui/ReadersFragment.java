@@ -101,18 +101,18 @@ public class ReadersFragment extends Fragment {
             String phone = etPhone.getText().toString().trim();
 
             if (name.isEmpty() || email.isEmpty() || phone.isEmpty()) {
-                UiUtils.showToast(requireContext(), "All fields are required!");
+                UiUtils.showToastS(requireContext(), "All fields are required!");
                 return;
             }
 
             // Validate email and phone
             if (StringUtils.isValidEmail(email)) {
-                UiUtils.showToast(requireContext(), "Invalid email format!");
+                UiUtils.showToastS(requireContext(), "Invalid email format!");
                 return;
             }
 
             if (StringUtils.isValidPhone(phone)) {
-                UiUtils.showToast(requireContext(), "Invalid phone number! Must be 10 digits.");
+                UiUtils.showToastS(requireContext(), "Invalid phone number! Must be 10 digits.");
                 return;
             }
 
@@ -129,7 +129,7 @@ public class ReadersFragment extends Fragment {
 
                 requireActivity().runOnUiThread(() -> {
                     if (existingReader != null) {
-                        UiUtils.showToast(requireContext(), "Reader with this phone number already exists!");
+                        UiUtils.showToastS(requireContext(), "Reader with this phone number already exists!");
                     } else {
                         new Thread(() -> {
                             Reader newReader = new Reader(phone, formattedName, formattedEmail, phone, 0);
@@ -139,7 +139,7 @@ public class ReadersFragment extends Fragment {
                             List<Reader> updatedReaders = db.readerDao().getAllReaders();
 
                             requireActivity().runOnUiThread(() -> {
-                                UiUtils.showToast(requireContext(), "Reader Registered!");
+                                UiUtils.showToastS(requireContext(), "Reader Registered!");
                                 readersAdapter.updateList(updatedReaders);
                             });
                         }).start();

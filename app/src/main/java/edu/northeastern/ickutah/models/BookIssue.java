@@ -41,7 +41,8 @@ public class BookIssue implements Serializable {
     public Date getIssueDate() { return issueDate; }
     public Date getDueDate() { return dueDate; }
     public Date getReturnDate() { return returnDate; }
+    public void setReturnDate(Date returnDate) { this.returnDate = returnDate; }
     public boolean isReturned() { return isReturned; }
     public void setReturned(boolean returned) { this.isReturned = returned; }
-    public void setReturnDate(Date returnDate) { this.returnDate = returnDate; }
+
 }

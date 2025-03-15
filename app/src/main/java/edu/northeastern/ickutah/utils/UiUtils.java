@@ -7,10 +7,19 @@ import android.widget.Toast;
 public class UiUtils {
 
     /**
-     * Displays a Toast message at the bottom of the screen
+     * Displays a Toast (Short) message at the bottom of the screen
      */
-    public static void showToast(Context context, String message) {
+    public static void showToastS(Context context, String message) {
         Toast toast = Toast.makeText(context, message, Toast.LENGTH_SHORT);
+        toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 195);
+        toast.show();
+    }
+
+    /**
+     * Displays a Toast (Long) message at the bottom of the screen
+     */
+    public static void showToastL(Context context, String message) {
+        Toast toast = Toast.makeText(context, message, Toast.LENGTH_LONG);
         toast.setGravity(Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL, 0, 195);
         toast.show();
     }

@@ -1,9 +1,14 @@
 package edu.northeastern.ickutah.ui;
 
+import android.app.AlertDialog;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.FrameLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -11,7 +16,8 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import com.google.android.material.button.MaterialButton;
-import java.text.MessageFormat;
+import com.google.android.material.snackbar.Snackbar;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Locale;
@@ -27,6 +33,7 @@ public class BookIssueDetailsFragment extends Fragment {
     private static final String ARG_BOOK_ISSUE = "book_issue";
     private BookIssue bookIssue;
     private final SimpleDateFormat dateFormat = new SimpleDateFormat("MMM dd, yyyy h:mm a", Locale.getDefault());
+    private boolean isUndoPressed = false;
 
     public static BookIssueDetailsFragment newInstance(BookIssue bookIssue) {
         BookIssueDetailsFragment fragment = new BookIssueDetailsFragment();
@@ -47,9 +54,7 @@ public class BookIssueDetailsFragment extends Fragment {
         TextView readerIdView = view.findViewById(R.id.reader_id);
         TextView issueDateView = view.findViewById(R.id.issue_date);
         TextView dueDateView = view.findViewById(R.id.due_date);
-        TextView returnDateView = view.findViewById(R.id.return_date);
-        TextView statusView = view.findViewById(R.id.book_issue_status);
-        MaterialButton returnButton = view.findViewById(R.id.btn_mark_as_returned);
+        MaterialButton markAsReturnedButton = view.findViewById(R.id.btn_mark_as_returned);
         MaterialButton backButton = view.findViewById(R.id.btn_back);
 
         // Retrieve Data from Bundle
@@ -60,23 +65,13 @@ public class BookIssueDetailsFragment extends Fragment {
                 issueIdView.setText(String.format("Issue ID: %s", bookIssue.getIssueId()));
                 bookIdView.setText(String.format("Book ID: %s", bookIssue.getBookId()));
                 readerIdView.setText(String.format("Reader ID: %s", bookIssue.getReaderId()));
-                issueDateView.setText(MessageFormat.format("Issued: {0}", dateFormat.format(bookIssue.getIssueDate())));
-                dueDateView.setText(MessageFormat.format("Due: {0}", dateFormat.format(bookIssue.getDueDate())));
+                issueDateView.setText(String.format("Issued: %s", dateFormat.format(bookIssue.getIssueDate())));
+                dueDateView.setText(String.format("Due: %s", dateFormat.format(bookIssue.getDueDate())));
 
-                if (bookIssue.isReturned()) {
-                    returnDateView.setText(MessageFormat.format("Returned: {0}", dateFormat.format(bookIssue.getReturnDate())));
-                    statusView.setText(R.string.returned);
-                    statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.successColor));
-                    returnButton.setVisibility(View.GONE); // Hide return button if book is already returned
-                } else {
-                    returnDateView.setText(R.string.returned_label);
-                    statusView.setText(R.string.not_returned);
-                    statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.errorColor));
-                    returnButton.setVisibility(View.VISIBLE);
-                }
+                setReturnStatus(view);
 
                 // Handle Book Return
-                returnButton.setOnClickListener(v -> returnBook(bookIssue));
+                markAsReturnedButton.setOnClickListener(v -> confirmReturnBook(bookIssue));
             }
         }
 
@@ -86,7 +81,7 @@ public class BookIssueDetailsFragment extends Fragment {
         return view;
     }
 
-    private void displayBookIssueDetails() {
+        private void displayBookIssueDetails() {
         if (bookIssue == null || getView() == null) return;
 
         // Find UI Elements
@@ -95,9 +90,6 @@ public class BookIssueDetailsFragment extends Fragment {
         TextView readerIdView = getView().findViewById(R.id.reader_id);
         TextView issueDateView = getView().findViewById(R.id.issue_date);
         TextView dueDateView = getView().findViewById(R.id.due_date);
-        TextView returnDateView = getView().findViewById(R.id.return_date);
-        TextView statusView = getView().findViewById(R.id.book_issue_status);
-        MaterialButton markAsReturnedButton = getView().findViewById(R.id.btn_mark_as_returned);
 
         // Update UI with issue details
         issueIdView.setText(String.format("Issue ID: %s", bookIssue.getIssueId()));
@@ -106,50 +98,113 @@ public class BookIssueDetailsFragment extends Fragment {
         issueDateView.setText(String.format("Issued: %s", dateFormat.format(bookIssue.getIssueDate())));
         dueDateView.setText(String.format("Due: %s", dateFormat.format(bookIssue.getDueDate())));
 
+        setReturnStatus(getView());
+    }
+
+    private void setReturnStatus(View rootView) {
+        if (bookIssue == null || rootView == null) return;
+
+        TextView returnDateView = rootView.findViewById(R.id.return_date);
+        TextView statusView = rootView.findViewById(R.id.book_issue_status);
+        MaterialButton markAsReturnedButton = rootView.findViewById(R.id.btn_mark_as_returned);
+
         if (bookIssue.isReturned()) {
+            returnDateView.setVisibility(View.VISIBLE);
             returnDateView.setText(String.format("Returned: %s", dateFormat.format(bookIssue.getReturnDate())));
             statusView.setText(R.string.returned);
             statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.successColor));
             markAsReturnedButton.setVisibility(View.GONE); // Hide button if already returned
         } else {
-            returnDateView.setText(R.string.returned_label);
+            returnDateView.setVisibility(View.GONE); // Hide return date if not returned
             statusView.setText(R.string.not_returned);
             statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.errorColor));
             markAsReturnedButton.setVisibility(View.VISIBLE); // Show button if not returned
         }
     }
 
-    private void returnBook(BookIssue bookIssue) {
+    private void confirmReturnBook(BookIssue bookIssue) {
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Confirm Return")
+                .setMessage("Are you sure you want to mark this book as returned?")
+                .setPositiveButton("Yes, Return", (dialog, which) -> snackbackReturn(bookIssue))
+                .setNegativeButton("Cancel", (dialog, which) -> dialog.dismiss())
+                .show();
+    }
+
+    private void snackbackReturn(BookIssue bookIssue) {
+        Date returnTime = new Date(); // Get current time
+        isUndoPressed = false; // Reset flag at the start
+
+        // Show Snackbar for Undo Option
+        View rootView = requireActivity().findViewById(android.R.id.content);
+        Snackbar snackbar = Snackbar.make(rootView, "Finalizing return...", Snackbar.LENGTH_LONG)
+                .setAction("Cancel", v -> cancelReturn()) // Undo action
+                .setDuration(2000); // Delay before finalizing
+
+        // Get Snackbar View
+        View snackbarView = snackbar.getView();
+        FrameLayout.LayoutParams params = (FrameLayout.LayoutParams) snackbarView.getLayoutParams();
+
+        // Adjust Gravity (Move Snackbar higher)
+        params.gravity = Gravity.BOTTOM | Gravity.CENTER_HORIZONTAL;
+        params.bottomMargin = 195; // Same as UiUtils.showToast
+        snackbarView.setLayoutParams(params);
+
+        snackbar.show();
+
+        // Handler to finalize return after delay
+        new Handler(Looper.getMainLooper()).postDelayed(() -> {
+            if (!isUndoPressed) {
+                finalizeReturn(bookIssue, returnTime);
+            }
+        }, 2000);
+    }
+    
+    private void finalizeReturn(BookIssue bookIssue, Date returnTime) {
         new Thread(() -> {
-            // Mark the book as returned
             bookIssue.setReturned(true);
-            bookIssue.setReturnDate(new Date());
-            LibraryDatabase.getInstance(requireContext()).bookIssueDao().update(bookIssue);
+            bookIssue.setReturnDate(returnTime);
+
+            LibraryDatabase db = LibraryDatabase.getInstance(requireContext());
+            db.bookIssueDao().update(bookIssue);
 
             // Update book availability
-            Book book = LibraryDatabase.getInstance(requireContext()).bookDao().getBookById(bookIssue.getBookId());
+            Book book = db.bookDao().getBookById(bookIssue.getBookId());
             if (book != null) {
                 book.setAvailableCopies(book.getAvailableCopies() + 1);
-                LibraryDatabase.getInstance(requireContext()).bookDao().update(book);
+                db.bookDao().update(book);
             }
 
             // Fetch updated checkouts count
-            int updatedCheckouts = LibraryDatabase.getInstance(requireContext())
+            int updatedCheckouts = db
                     .bookIssueDao()
                     .getCurrentCheckouts(bookIssue.getReaderId());
 
             // Update the reader's checkouts count
-            Reader reader = LibraryDatabase.getInstance(requireContext()).readerDao().getReaderById(bookIssue.getReaderId());
+            Reader reader = db.readerDao().getReaderById(bookIssue.getReaderId());
             if (reader != null) {
                 reader.setCurrentCheckouts(updatedCheckouts);
-                LibraryDatabase.getInstance(requireContext()).readerDao().update(reader);
+                db.readerDao().update(reader);
             }
 
-            // Update UI on the Main Thread
+            // Update UI
             requireActivity().runOnUiThread(() -> {
-                UiUtils.showToast(requireContext(), "Book Returned!");
-                displayBookIssueDetails(); // Refresh the UI
+                new android.os.Handler().postDelayed(() -> {
+                    if (bookIssue.isReturned()) {
+                    UiUtils.showToastS(requireContext(), "Book Returned!");
+                    }
+                }, 300);
+                displayBookIssueDetails(); // Refresh UI
             });
         }).start();
+    }
+
+    private void cancelReturn() {
+        isUndoPressed = true; // Mark return as canceled
+
+        requireActivity().runOnUiThread(() -> {
+            UiUtils.showToastS(requireContext(), "Return canceled! Book is still checked out.");
+            displayBookIssueDetails(); // Refresh UI
+        });
     }
 }

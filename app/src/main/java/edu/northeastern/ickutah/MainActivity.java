@@ -148,7 +148,7 @@ public class MainActivity extends AppCompatActivity {
                 LibraryFragment libraryFragment = (LibraryFragment) getSupportFragmentManager()
                         .findFragmentById(R.id.fragment_container);
                 if (libraryFragment != null) {
-                    UiUtils.showToast(this, "Select a book");
+                    UiUtils.showToastS(this, "Select a book");
                 }
             }, 300);
         }

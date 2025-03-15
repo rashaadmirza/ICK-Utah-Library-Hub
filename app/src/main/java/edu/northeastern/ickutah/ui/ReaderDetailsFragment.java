@@ -130,18 +130,18 @@ public class ReaderDetailsFragment extends Fragment {
             String newPhone = etPhone.getText().toString().trim();
 
             if (newName.isEmpty() || newEmail.isEmpty() || newPhone.isEmpty()) {
-                UiUtils.showToast(requireContext(), "All fields are required!");
+                UiUtils.showToastS(requireContext(), "All fields are required!");
                 return;
             }
 
             // Validate email and phone
             if (StringUtils.isValidEmail(newEmail)) {
-                UiUtils.showToast(requireContext(), "Invalid email format!");
+                UiUtils.showToastS(requireContext(), "Invalid email format!");
                 return;
             }
 
             if (StringUtils.isValidPhone(newPhone)) {
-                UiUtils.showToast(requireContext(), "Invalid phone number! Must be 10 digits.");
+                UiUtils.showToastS(requireContext(), "Invalid phone number! Must be 10 digits.");
                 return;
             }
 
@@ -157,7 +157,7 @@ public class ReaderDetailsFragment extends Fragment {
 
                 requireActivity().runOnUiThread(() -> {
                     if (existingReader != null && !existingReader.getReaderId().equals(reader.getReaderId())) {
-                        UiUtils.showToast(requireContext(), "Reader with this phone number already exists!");
+                        UiUtils.showToastS(requireContext(), "Reader with this phone number already exists!");
                     } else {
                         new Thread(() -> {
                             // Update reader details in background thread
@@ -173,7 +173,7 @@ public class ReaderDetailsFragment extends Fragment {
                             db.bookIssueDao().updateReaderIdInBookIssues(oldReaderId, newPhone);
 
                             requireActivity().runOnUiThread(() -> {
-                                UiUtils.showToast(requireContext(), "Reader Updated!");
+                                UiUtils.showToastS(requireContext(), "Reader Updated!");
                                 displayReaderDetails(reader);
 
                                 // Notify ReadersFragment about the update
@@ -212,7 +212,7 @@ public class ReaderDetailsFragment extends Fragment {
                             .setPositiveButton("Delete", (dialog, which) -> new Thread(() -> {
                                 db.readerDao().delete(reader);
                                 requireActivity().runOnUiThread(() -> {
-                                    UiUtils.showToast(requireContext(), "Reader Deleted!");
+                                    UiUtils.showToastS(requireContext(), "Reader Deleted!");
                                     getParentFragmentManager().setFragmentResult("reader_update", new Bundle());
                                     requireActivity().getSupportFragmentManager().popBackStack();
                                 });

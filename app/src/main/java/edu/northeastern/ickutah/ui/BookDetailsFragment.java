@@ -128,7 +128,12 @@ public class BookDetailsFragment extends Fragment {
         builder.setPositiveButton("Issue", (dialog, which) -> {
             String readerId = etReaderId.getText().toString().trim().toUpperCase();
             if (readerId.isEmpty()) {
-                UiUtils.showToast(requireContext(), "Reader ID is required!");
+                UiUtils.showToastS(requireContext(), "Reader ID is required!");
+                return;
+            }
+
+            if (readerId.length() < 10) {
+                UiUtils.showToastS(requireContext(), "Reader ID must be at least 10 characters long!");
                 return;
             }
 
@@ -138,7 +143,7 @@ public class BookDetailsFragment extends Fragment {
                 // Check if the reader exists
                 if (db.readerDao().getReaderById(readerId) == null) {
                     requireActivity().runOnUiThread(() ->
-                            UiUtils.showToast(requireContext(), "Reader not found!")
+                            UiUtils.showToastL(requireContext(), "Reader not found!")
                     );
                     return;
                 }
@@ -164,7 +169,7 @@ public class BookDetailsFragment extends Fragment {
                 Book updatedBook = db.bookDao().getBookById(book.getBookId());
 
                 requireActivity().runOnUiThread(() -> {
-                    UiUtils.showToast(requireContext(), "Book Issued!");
+                    UiUtils.showToastL(requireContext(), "Book Issued!");
 
                     // Update UI with fresh data
                     displayBookDetails(updatedBook);
@@ -204,7 +209,7 @@ public class BookDetailsFragment extends Fragment {
             String newCopiesStr = etCopies.getText().toString().trim();
 
             if (newTitle.isEmpty() || newAuthor.isEmpty() || newPublisher.isEmpty() || newYear.isEmpty() || newCopiesStr.isEmpty()) {
-                UiUtils.showToast(requireContext(), "All fields are required!");
+                UiUtils.showToastS(requireContext(), "All fields are required!");
                 return;
             }
 
@@ -213,11 +218,11 @@ public class BookDetailsFragment extends Fragment {
             try {
                 int yearInt = Integer.parseInt(newYear);
                 if (yearInt > currentYear) {
-                    UiUtils.showToast(requireContext(), "Year cannot be in the future!");
+                    UiUtils.showToastS(requireContext(), "Year cannot be in the future!");
                     return;
                 }
             } catch (NumberFormatException e) {
-                UiUtils.showToast(requireContext(), "Invalid year!");
+                UiUtils.showToastS(requireContext(), "Invalid year!");
                 return;
             }
 
@@ -225,11 +230,11 @@ public class BookDetailsFragment extends Fragment {
             try {
                 newTotalCopies = Integer.parseInt(newCopiesStr);
                 if (newTotalCopies <= 0) {
-                    UiUtils.showToast(requireContext(), "Total copies must be at least 1!");
+                    UiUtils.showToastS(requireContext(), "Total copies must be at least 1!");
                     return;
                 }
             } catch (NumberFormatException e) {
-                UiUtils.showToast(requireContext(), "Invalid number of copies!");
+                UiUtils.showToastS(requireContext(), "Invalid number of copies!");
                 return;
             }
 
@@ -250,9 +255,9 @@ public class BookDetailsFragment extends Fragment {
 
                 requireActivity().runOnUiThread(() -> {
                     if (existingBook != null && !existingBook.getBookId().equals(book.getBookId())) {
-                        UiUtils.showToast(requireContext(), "Book already exists!");
+                        UiUtils.showToastS(requireContext(), "Book already exists!");
                     } else if (newTotalCopies < issuedCopies) {
-                        UiUtils.showToast(requireContext(), "Total copies cannot be less than issued copies!");
+                        UiUtils.showToastS(requireContext(), "Total copies cannot be less than issued copies!");
                     } else {
                         new Thread(() -> {
                             // Update book details in background thread
@@ -265,7 +270,7 @@ public class BookDetailsFragment extends Fragment {
                             db.bookDao().update(book);
 
                             requireActivity().runOnUiThread(() -> {
-                                UiUtils.showToast(requireContext(), "Book Updated!");
+                                UiUtils.showToastS(requireContext(), "Book Updated!");
                                 displayBookDetails(book);
                             });
                         }).start();
@@ -301,7 +306,7 @@ public class BookDetailsFragment extends Fragment {
                             .setPositiveButton("Delete", (dialog, which) -> new Thread(() -> {
                                 db.bookDao().delete(book);
                                 requireActivity().runOnUiThread(() -> {
-                                    UiUtils.showToast(requireContext(), "Book Deleted!");
+                                    UiUtils.showToastS(requireContext(), "Book Deleted!");
                                     requireActivity().getSupportFragmentManager().popBackStack(); // Go back to previous screen
                                 });
                             }).start())

@@ -100,7 +100,7 @@ public class LibraryFragment extends Fragment {
             String copiesStr = etCopies.getText().toString().trim();
 
             if (title.isEmpty() || author.isEmpty() || publisher.isEmpty() || year.isEmpty() || copiesStr.isEmpty()) {
-                UiUtils.showToast(requireContext(), "All fields are required!");
+                UiUtils.showToastS(requireContext(), "All fields are required!");
                 return;
             }
 
@@ -109,11 +109,11 @@ public class LibraryFragment extends Fragment {
             try {
                 int yearInt = Integer.parseInt(year);
                 if (yearInt > currentYear) {
-                    UiUtils.showToast(requireContext(), "Year cannot be in the future!");
+                    UiUtils.showToastS(requireContext(), "Year cannot be in the future!");
                     return;
                     }
             } catch (NumberFormatException e) {
-                UiUtils.showToast(requireContext(), "Invalid year!");
+                UiUtils.showToastS(requireContext(), "Invalid year!");
                 return;
             }
 
@@ -121,11 +121,11 @@ public class LibraryFragment extends Fragment {
             try {
                 totalCopies = Integer.parseInt(copiesStr);
                 if (totalCopies <= 0) {
-                    UiUtils.showToast(requireContext(), "Total copies must be at least 1!");
+                    UiUtils.showToastS(requireContext(), "Total copies must be at least 1!");
                     return;
                 }
             } catch (NumberFormatException e) {
-                UiUtils.showToast(requireContext(), "Invalid number of copies!");
+                UiUtils.showToastS(requireContext(), "Invalid number of copies!");
                 return;
             }
 
@@ -143,7 +143,7 @@ public class LibraryFragment extends Fragment {
 
                 requireActivity().runOnUiThread(() -> {
                     if (existingBook != null) {
-                        UiUtils.showToast(requireContext(), "Book already exists!");
+                        UiUtils.showToastS(requireContext(), "Book already exists!");
                     } else {
                         new Thread(() -> {
                             // Insert new book
@@ -162,7 +162,7 @@ public class LibraryFragment extends Fragment {
                             List<Book> updatedBooks = db.bookDao().getAllBooks();
 
                             requireActivity().runOnUiThread(() -> {
-                                UiUtils.showToast(requireContext(), "Book Added!");
+                                UiUtils.showToastS(requireContext(), "Book Added!");
                                 libraryAdapter.updateList(updatedBooks);
                             });
                         }).start();
