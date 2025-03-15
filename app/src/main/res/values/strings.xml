@@ -1,0 +1,93 @@
+<resources>
+    <!-- Misc -->
+    <string name="app_name">ICK Utah</string>
+    <string name="ick_bio">The Islamic Center of Kuwait in Utah is a vibrant hub for learning and community engagement, dedicated to fostering Islamic knowledge and cultural exchange. Originally established as a community center, it was renamed in November 2014 following a generous one-million-dollar donation from the State of Kuwait, directed by His Highness Emir Sheikh Sabah Al-Ahmad Al-Jaber Al-Sabah. Under the leadership of Imam Mohammed Al-Tigar, president and chair of the Islamic Center of Kuwait in South Ogden, the center has flourished as a place of worship, education, and cultural outreach. It is home to a large Islamic library, featuring over 1,000 books and scientific texts, providing valuable resources on Islamic studies, history, and scholarly research. Serving as a beacon of education and spirituality, the center continues to support intellectual and cultural enrichment for visitors and scholars alike.</string>
+    <string name="ick_utah">ICK Utah</string>
+    <string name="ick_utah_logo_face">ICK Utah Logo Face</string>
+    <string name="ick_utah_logo_type">ICK Utah Logo Type</string>
+
+    <!-- Menu -->
+    <string name="menu">Menu</string>
+    <string name="home">Home</string>
+    <string name="readers">Readers</string>
+    <string name="library">Library</string>
+    <string name="book_issues">Book Issues</string>
+    <string name="search">Search</string>
+
+    <string name="add_new_book">Add New Book</string>
+    <string name="import_books">Import Books</string>
+    <string name="export_books">Export Books</string>
+    <string name="add_new_reader">Add New Reader</string>
+    <string name="issue_a_book">Issue a Book</string>
+
+    <!-- Buttons -->
+    <string name="back">Back</string>
+    <string name="edit">Edit</string>
+    <string name="delete">Delete</string>
+    <string name="issue_book">Issue Book</string>
+
+    <!-- Text Fields -->
+    <string name="enter_reader_id">Enter Reader ID</string>
+
+    <!-- About Fragment -->
+    <string name="about">About</string>
+    <string name="ick_utah_library_hub">ICK Utah Library Hub</string>
+    <string name="version_info">Version 1.0</string>
+    <string name="features">Features</string>
+    <string name="features_text"><![CDATA[Admin Dashboard\nDigital Library Records\nReader Management\nBook Issue & Return Tracking\nReal-Time Search & Filtering]]></string>
+    <string name="contact_us">Contact Us</string>
+    <string name="info_ickutah_org">Islamic Center of Kuwait in Utah\n5864 Harrison Blvd South Ogden, UT 84403\ninfo@ickutah.org\nwww.ickutah.org</string>
+    <string name="legal_notice">© 2025 ICK Utah. All rights reserved.\nUnauthorized copying or distribution is prohibited.</string>
+    <string name="developer_info">Developed by: Rashaad Mirza\nNortheastern University, Spring 2025\nCS 5520 Mobile App Dev\nInstructor: Dr. Gary Cantrell</string>
+
+    <!-- Home Fragment -->
+    <string name="collection_summary">Collection Summary</string>
+    <string name="titles_icon">Titles Icon</string>
+    <string name="titles">Titles</string>
+    <string name="authors_icon">Authors Icon</string>
+    <string name="authors">Authors</string>
+    <string name="books">Books</string>
+    <string name="book_icon">Book Icon</string>
+
+    <string name="library_activity">Library Activity</string>
+    <string name="reading">Reading</string>
+    <string name="reader_icon">Reader Icon</string>
+    <string name="books_loaned">Books Loaned</string>
+    <string name="overdue_loans">Overdue Loans</string>
+    <string name="notification_important_icon">Notification Important Icon</string>
+
+    <!-- Reader Details -->
+    <string name="reader_details">Reader Details</string>
+    <string name="name">Name</string>
+    <string name="phone">Phone</string>
+    <string name="email">Email</string>
+
+    <!-- Book Details -->
+    <string name="book_details">Book Details</string>
+    <string name="title">Title</string>
+    <string name="book_id">Book ID</string>
+    <string name="author">Author</string>
+    <string name="publisher">Publisher</string>
+    <string name="year">Year</string>
+    <string name="total_copies">Total Copies</string>
+    <string name="available_copies">Available Copies</string>
+
+    <!-- Book Issues -->
+    <string name="book_issues_icon">Book Issues Icon</string>
+    <string name="issue_id_label">Issue ID:\u0020</string>
+    <string name="book_id_label">Book ID:\u0020</string>
+    <string name="reader_id_label">Reader ID:\u0020</string>
+    <string name="issued_label">"Issued:\u0020"</string>
+    <string name="due_label">Due:\u0020</string>
+    <string name="returned_label">Returned:\u0020</string>
+<!--    <string name="returned_dash">Returned: -</string>-->
+    <string name="returned">Returned</string>
+    <string name="not_returned">Not Returned</string>
+    <string name="mark_as_returned">Mark as Returned</string>
+    <string name="show_returned_issues">Show Returned Issues</string>
+
+    <!-- Search Fragment -->
+    <string name="search_hint">Search books, authors, readers…</string>
+    <string name="search_result">Search Result</string>
+
+</resources>

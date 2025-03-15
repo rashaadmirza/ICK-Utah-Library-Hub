@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    app:contentPadding="16dp"
+    app:cardCornerRadius="12dp"
+    app:cardElevation="4dp"
+    app:cardBackgroundColor="@color/obsidian_shadow_t10"
+    app:strokeColor="@color/golden_sandstone_s40"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Icon -->
+        <ImageView
+            android:id="@+id/book_issue_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/book_issues_icon"
+            android:src="@drawable/orbit_24px_fill"
+            app:tint="@color/golden_sandstone_s40"
+            tools:ignore="ImageContrastCheck" />
+
+        <!-- Book ID -->
+        <TextView
+            android:id="@+id/book_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/book_id_label"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Reader ID -->
+        <TextView
+            android:id="@+id/reader_id"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/reader_id_label"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Due Date -->
+        <TextView
+            android:id="@+id/issue_due_date"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="8dp"
+            android:text="@string/due_label"
+            android:textColor="@color/white"
+            android:textSize="16sp" />
+
+        <!-- Status (Returned or Not Returned) -->
+        <TextView
+            android:id="@+id/issue_status"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/not_returned"
+            android:textColor="@color/design_default_color_error"
+            android:textSize="16sp"
+            tools:ignore="TextContrastCheck" />
+
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

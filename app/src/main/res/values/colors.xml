@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+
+    <color name="obsidian_shadow">#231F20</color>
+    <color name="obsidian_shadow_t10">#393536</color>
+
+    <color name="golden_sandstone">#C49A6C</color>
+    <color name="golden_sandstone_s40">#765C41</color>
+
+    <color name="molten_chestnut">#603913</color>
+    <color name="molten_chestnut_s40">#3A220B</color>
+    <color name="molten_chestnut_t10">#704D2B</color>
+
+    <color name="azure_tide">#00A79D</color>
+    <color name="azure_tide_s20">#00867e</color>
+    <color name="azure_tide_font">#4DB6AC</color>
+    <color name="azure_tide_button_font">#D4FAF7</color>
+
+    <color name="successColor">#4CAF50</color>
+    <color name="errorColor">#F44336</color>
+
+    <color name="grey">#9E9E9E</color>
+
+</resources>

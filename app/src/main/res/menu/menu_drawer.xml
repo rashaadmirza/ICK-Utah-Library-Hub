@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:id="@+id/group_main">
+        <item
+            android:id="@+id/nav_home"
+            android:icon="@drawable/home_24px"
+            android:title="@string/home"/>
+        <item
+            android:id="@+id/nav_search"
+            android:icon="@drawable/search_24px"
+            android:title="@string/search"/>
+    </group>
+
+    <group android:id="@+id/group_library">
+        <item
+            android:id="@+id/nav_library"
+            android:icon="@drawable/book_2_24px"
+            android:title="@string/library"/>
+        <item
+            android:id="@+id/nav_add_book"
+            android:icon="@drawable/add_circle_24px"
+            android:title="@string/add_new_book"/>
+        <item
+            android:id="@+id/nav_import_books"
+            android:icon="@drawable/database_upload_24px"
+            android:title="@string/import_books"/>
+        <item
+            android:id="@+id/nav_export_books"
+            android:icon="@drawable/ios_share_24px"
+            android:title="@string/export_books"/>
+    </group>
+
+    <group android:id="@+id/group_readers">
+        <item
+            android:id="@+id/nav_readers"
+            android:icon="@drawable/group_24px"
+            android:title="@string/readers"/>
+        <item
+            android:id="@+id/nav_add_reader"
+            android:icon="@drawable/person_add_24px"
+            android:title="@string/add_new_reader"/>
+    </group>
+
+    <group android:id="@+id/group_books">
+        <item
+            android:id="@+id/nav_book_issues"
+            android:icon="@drawable/orbit_24px"
+            android:title="@string/book_issues"/>
+        <item
+            android:id="@+id/nav_issue_book"
+            android:icon="@drawable/deployed_code_account_24px"
+            android:title="@string/issue_a_book"/>
+    </group>
+
+    <group android:id="@+id/group_app">
+        <item
+            android:id="@+id/nav_about"
+            android:icon="@drawable/info_24px"
+            android:title="@string/about"/>
+    </group>
+
+</menu>
