@@ -13,6 +13,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import androidx.appcompat.widget.SwitchCompat;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 import edu.northeastern.ickutah.R;
 import edu.northeastern.ickutah.database.LibraryDatabase;
@@ -23,6 +24,7 @@ public class BookIssuesFragment extends Fragment {
     private RecyclerView recyclerView;
     private BookIssuesAdapter bookIssuesAdapter;
     private List<BookIssue> filteredIssues;
+    private int scrollPosition = 0;
 
     @Nullable
     @Override
@@ -49,6 +51,18 @@ public class BookIssuesFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Restore scroll position after data is loaded
+        recyclerView.post(() -> {
+            if (scrollPosition != RecyclerView.NO_POSITION) {
+                recyclerView.scrollToPosition(scrollPosition);
+            }
+        });
+    }
+
     @SuppressLint("NotifyDataSetChanged")
     private void loadBookIssues(boolean showReturned) {
         new Thread(() -> {
@@ -72,6 +86,9 @@ public class BookIssuesFragment extends Fragment {
 
     // Open Book Issue Details Page when clicked
     private void onBookIssueClicked(BookIssue issue) {
+        // Save scroll position before navigating to ReaderDetailsFragment
+        recyclerView.post(() -> scrollPosition = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager())).findFirstVisibleItemPosition());
+
         Fragment bookIssueDetailsFragment = BookIssueDetailsFragment.newInstance(issue);
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, bookIssueDetailsFragment)

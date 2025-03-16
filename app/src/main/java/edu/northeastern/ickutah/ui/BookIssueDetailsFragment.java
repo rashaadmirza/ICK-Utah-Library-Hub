@@ -105,7 +105,7 @@ public class BookIssueDetailsFragment extends Fragment {
         if (bookIssue == null || rootView == null) return;
 
         TextView returnDateView = rootView.findViewById(R.id.return_date);
-        TextView statusView = rootView.findViewById(R.id.book_issue_status);
+        TextView statusView = rootView.findViewById(R.id.issue_status);
         MaterialButton markAsReturnedButton = rootView.findViewById(R.id.btn_mark_as_returned);
 
         if (bookIssue.isReturned()) {
@@ -135,8 +135,24 @@ public class BookIssueDetailsFragment extends Fragment {
         Date returnTime = new Date(); // Get current time
         isUndoPressed = false; // Reset flag at the start
 
+        // Create an overlay to darken the screen
+        View overlay = new View(requireContext());
+        overlay.setLayoutParams(new ViewGroup.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT,
+                ViewGroup.LayoutParams.MATCH_PARENT
+        ));
+        overlay.setBackgroundColor(ContextCompat.getColor(requireContext(), R.color.black)); // Dark color
+        overlay.setAlpha(0.5f); // Adjust transparency (0.0 - fully transparent, 1.0 - fully opaque)
+
+        // Add overlay to the root view
+        ViewGroup rootView = requireActivity().findViewById(android.R.id.content);
+        rootView.addView(overlay);
+
+        // Block Background Interaction (Prevent Back Navigation & Clicks But Keep Snackbar Interactive)
+        overlay.setClickable(true);  // This prevents touches from passing through to the background
+        overlay.setFocusable(true);
+
         // Show Snackbar for Undo Option
-        View rootView = requireActivity().findViewById(android.R.id.content);
         Snackbar snackbar = Snackbar.make(rootView, "Finalizing return...", Snackbar.LENGTH_LONG)
                 .setAction("Cancel", v -> cancelReturn()) // Undo action
                 .setDuration(2000); // Delay before finalizing
@@ -152,12 +168,20 @@ public class BookIssueDetailsFragment extends Fragment {
 
         snackbar.show();
 
+        // Re-enable User Interaction after Snackbar disappears
+        snackbar.addCallback(new Snackbar.Callback() {
+            @Override
+            public void onDismissed(Snackbar transientBottomBar, int event) {
+                rootView.removeView(overlay); // Remove overlay after Snackbar disappears
+            }
+        });
+
         // Handler to finalize return after delay
         new Handler(Looper.getMainLooper()).postDelayed(() -> {
             if (!isUndoPressed) {
                 finalizeReturn(bookIssue, returnTime);
             }
-        }, 2000);
+        }, 2500);
     }
     
     private void finalizeReturn(BookIssue bookIssue, Date returnTime) {
@@ -189,11 +213,9 @@ public class BookIssueDetailsFragment extends Fragment {
 
             // Update UI
             requireActivity().runOnUiThread(() -> {
-                new android.os.Handler().postDelayed(() -> {
-                    if (bookIssue.isReturned()) {
+                if (bookIssue.isReturned()) {
                     UiUtils.showToastS(requireContext(), "Book Returned!");
-                    }
-                }, 300);
+                }
                 displayBookIssueDetails(); // Refresh UI
             });
         }).start();

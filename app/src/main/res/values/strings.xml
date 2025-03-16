@@ -75,20 +75,20 @@
 
     <!-- Book Issues -->
     <string name="book_issues_icon">Book Issues Icon</string>
+    <string name="issues">Issues</string>
     <string name="issue_id_label">Issue ID:\u0020</string>
     <string name="book_id_label">Book ID:\u0020</string>
     <string name="reader_id_label">Reader ID:\u0020</string>
     <string name="issued_label">"Issued:\u0020"</string>
     <string name="due_label">Due:\u0020</string>
     <string name="returned_label">Returned:\u0020</string>
-<!--    <string name="returned_dash">Returned: -</string>-->
     <string name="returned">Returned</string>
     <string name="not_returned">Not Returned</string>
     <string name="mark_as_returned">Mark as Returned</string>
     <string name="show_returned_issues">Show Returned Issues</string>
 
     <!-- Search Fragment -->
-    <string name="search_hint">Search books, authors, readers…</string>
+    <string name="search_hint">Type to search…</string>
     <string name="search_result">Search Result</string>
 
 </resources>

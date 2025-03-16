@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
+import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
@@ -21,27 +22,27 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     private static final int VIEW_TYPE_READER = 1;
     private static final int VIEW_TYPE_BOOK_ISSUE = 2;
 
-    private List<Book> books;
-    private List<Reader> readers;
-    private List<BookIssue> bookIssues;
-    private final OnSearchItemClickListener clickListener;
+    private List<Book> bookList;
+    private List<Reader> readerList;
+    private List<BookIssue> bookIssueList;
+    private final OnSearchItemClickListener searchItemClickListener;
 
     public interface OnSearchItemClickListener {
         void onSearchItemClicked(Object item);
     }
 
-    public SearchAdapter(List<Book> books, List<Reader> readers, List<BookIssue> bookIssues, OnSearchItemClickListener clickListener) {
-        this.books = books;
-        this.readers = readers;
-        this.bookIssues = bookIssues;
-        this.clickListener = clickListener;
+    public SearchAdapter(List<Book> books, List<Reader> readers, List<BookIssue> bookIssues, OnSearchItemClickListener listener) {
+        this.bookList = books;
+        this.readerList = readers;
+        this.bookIssueList = bookIssues;
+        this.searchItemClickListener = listener;
     }
 
     @Override
     public int getItemViewType(int position) {
-        if (position < books.size()) {
+        if (position < bookList.size()) {
             return VIEW_TYPE_BOOK;
-        } else if (position < books.size() + readers.size()) {
+        } else if (position < bookList.size() + readerList.size()) {
             return VIEW_TYPE_READER;
         } else {
             return VIEW_TYPE_BOOK_ISSUE;
@@ -69,27 +70,27 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     @Override
     public void onBindViewHolder(@NonNull RecyclerView.ViewHolder holder, int position) {
         if (holder instanceof BookViewHolder) {
-            Book book = books.get(position);
-            ((BookViewHolder) holder).bind(book, clickListener);
+            Book book = bookList.get(position);
+            ((BookViewHolder) holder).bind(book, searchItemClickListener);
         } else if (holder instanceof ReaderViewHolder) {
-            Reader reader = readers.get(position - books.size());
-            ((ReaderViewHolder) holder).bind(reader, clickListener);
+            Reader reader = readerList.get(position - bookList.size());
+            ((ReaderViewHolder) holder).bind(reader, searchItemClickListener);
         } else {
-            BookIssue issue = bookIssues.get(position - books.size() - readers.size());
-            ((BookIssueViewHolder) holder).bind(issue, clickListener);
+            BookIssue issue = bookIssueList.get(position - bookList.size() - readerList.size());
+            ((BookIssueViewHolder) holder).bind(issue, searchItemClickListener);
         }
     }
 
     @Override
     public int getItemCount() {
-        return books.size() + readers.size() + bookIssues.size();
+        return bookList.size() + readerList.size() + bookIssueList.size();
     }
 
     @SuppressLint("NotifyDataSetChanged")
     public void updateResults(List<Book> newBooks, List<Reader> newReaders, List<BookIssue> newBookIssues) {
-        this.books = newBooks;
-        this.readers = newReaders;
-        this.bookIssues = newBookIssues;
+        this.bookList = newBooks;
+        this.readerList = newReaders;
+        this.bookIssueList = newBookIssues;
         notifyDataSetChanged();
     }
 
@@ -130,19 +131,25 @@ public class SearchAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>
     static class BookIssueViewHolder extends RecyclerView.ViewHolder {
         private final TextView bookId;
         private final TextView readerId;
-        private final TextView issueDueDate;
+        private final TextView dueDate;
+        private final TextView issueStatus;
 
         public BookIssueViewHolder(@NonNull View itemView) {
             super(itemView);
             bookId = itemView.findViewById(R.id.book_id);
             readerId = itemView.findViewById(R.id.reader_id);
-            issueDueDate = itemView.findViewById(R.id.issue_due_date);
+            dueDate = itemView.findViewById(R.id.due_date);
+            issueStatus = itemView.findViewById(R.id.issue_status);
         }
 
         public void bind(BookIssue issue, OnSearchItemClickListener listener) {
-            bookId.setText(issue.getBookId());
-            readerId.setText(issue.getReaderId());
-            issueDueDate.setText(issue.getDueDate().toString());
+            bookId.setText(String.format("Book ID: %s", issue.getBookId()));
+            readerId.setText(String.format("Reader ID: %s", issue.getReaderId()));
+            dueDate.setText(String.format("Due: %s", issue.getDueDate()));
+
+            issueStatus.setText(issue.isReturned() ? "Returned" : "Not Returned");
+            issueStatus.setTextColor(issue.isReturned() ? ContextCompat.getColor(itemView.getContext(), R.color.successColor) : ContextCompat.getColor(itemView.getContext(), R.color.errorColor));
+
             itemView.setOnClickListener(v -> listener.onSearchItemClicked(issue));
         }
     }

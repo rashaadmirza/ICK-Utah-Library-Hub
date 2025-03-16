@@ -21,7 +21,7 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="16dp"
             app:cardBackgroundColor="@color/obsidian_shadow"
-            app:cardCornerRadius="10dp"
+            app:cardCornerRadius="12dp"
             app:cardElevation="4dp"
             app:strokeColor="@color/obsidian_shadow_t10"
             app:strokeWidth="1dp">
@@ -41,7 +41,7 @@
                     android:focusable="true"
                     android:gravity="center_vertical"
                     android:minHeight="48dp"
-                    android:paddingVertical="8dp"
+                    android:padding="8dp"
                     tools:ignore="TouchTargetSizeCheck">
 
                     <ImageView
@@ -63,7 +63,7 @@
                         android:layout_width="24dp"
                         android:layout_height="24dp"
                         android:src="@drawable/ic_expand_more"
-                        app:tint="@color/molten_chestnut_t10"
+                        app:tint="@color/molten_chestnut"
                         tools:ignore="ContentDescription,ImageContrastCheck" />
                 </LinearLayout>
 
@@ -72,7 +72,7 @@
                     android:id="@+id/accordion_content"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:paddingTop="8dp"
+                    android:padding="8dp"
                     android:text="@string/ick_bio"
                     android:textAlignment="center"
                     android:textColor="@color/white"

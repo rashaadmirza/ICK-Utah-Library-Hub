@@ -33,7 +33,8 @@
         android:layout_margin="12dp"
         android:contentDescription="@string/add_new_book"
         android:src="@drawable/add_circle_24px"
-        app:backgroundTint="@color/golden_sandstone" />
+        app:tint="@color/molten_chestnut_s40"
+        app:backgroundTint="@color/golden_sandstone_s40" />
 
     <!-- RecyclerView for Books -->
     <androidx.recyclerview.widget.RecyclerView

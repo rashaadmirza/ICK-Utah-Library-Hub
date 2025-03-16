@@ -14,6 +14,9 @@
         android:inputType="phone"
         android:maxLength="10"
         android:minHeight="48dp"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:imeOptions="actionDone"
         tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
 
 </LinearLayout>

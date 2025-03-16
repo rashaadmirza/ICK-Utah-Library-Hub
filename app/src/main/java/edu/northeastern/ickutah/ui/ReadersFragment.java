@@ -18,6 +18,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 import java.util.ArrayList;
+import java.util.Objects;
 
 import edu.northeastern.ickutah.R;
 import edu.northeastern.ickutah.database.LibraryDatabase;
@@ -30,6 +31,7 @@ public class ReadersFragment extends Fragment {
     private RecyclerView recyclerView;
     private ReadersAdapter readersAdapter;
     private List<Reader> readerList;
+    private int scrollPosition = 0;
 
     @Nullable
     @Override
@@ -59,6 +61,18 @@ public class ReadersFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        // Restore scroll position after data is loaded
+        recyclerView.post(() -> {
+            if (scrollPosition != RecyclerView.NO_POSITION) {
+                recyclerView.scrollToPosition(scrollPosition);
+            }
+        });
+    }
+
     private void loadReaders() {
         new Thread(() -> {
             LibraryDatabase db = LibraryDatabase.getInstance(requireContext());
@@ -76,6 +90,9 @@ public class ReadersFragment extends Fragment {
     }
 
     private void onReaderClicked(Reader reader) {
+        // Save scroll position before navigating to ReaderDetailsFragment
+        recyclerView.post(() -> scrollPosition = ((LinearLayoutManager) Objects.requireNonNull(recyclerView.getLayoutManager())).findFirstVisibleItemPosition());
+
         Fragment readerDetailsFragment = ReaderDetailsFragment.newInstance(reader);
         requireActivity().getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, readerDetailsFragment)

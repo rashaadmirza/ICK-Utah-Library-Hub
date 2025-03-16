@@ -88,7 +88,7 @@ public class BookIssuesAdapter extends RecyclerView.Adapter<BookIssuesAdapter.Vi
 //            issueId = itemView.findViewById(R.id.issue_id);
             bookId = itemView.findViewById(R.id.book_id);
             readerId = itemView.findViewById(R.id.reader_id);
-            dueDate = itemView.findViewById(R.id.issue_due_date);
+            dueDate = itemView.findViewById(R.id.due_date);
             status = itemView.findViewById(R.id.issue_status);
         }
     }

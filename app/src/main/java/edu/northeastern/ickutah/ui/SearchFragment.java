@@ -81,6 +81,8 @@ public class SearchFragment extends Fragment {
 
             if (!query.isEmpty()) {
                 requireActivity().runOnUiThread(() -> searchAdapter.updateResults(filteredBooks, filteredReaders, filteredIssues));
+            } else {
+                requireActivity().runOnUiThread(() -> searchAdapter.updateResults(new ArrayList<>(), new ArrayList<>(), new ArrayList<>()));
             }
         }).start();
     }

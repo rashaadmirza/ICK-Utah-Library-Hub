@@ -2,10 +2,12 @@ package edu.northeastern.ickutah.ui;
 
 import android.annotation.SuppressLint;
 import android.app.AlertDialog;
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -124,6 +126,15 @@ public class BookDetailsFragment extends Fragment {
         builder.setView(dialogView);
 
         EditText etReaderId = dialogView.findViewById(R.id.et_reader_id);
+
+        // Automatically show keyboard
+        etReaderId.requestFocus();
+        etReaderId.postDelayed(() -> {
+            InputMethodManager imm = (InputMethodManager) requireContext().getSystemService(Context.INPUT_METHOD_SERVICE);
+            if (imm != null) {
+                imm.showSoftInput(etReaderId, InputMethodManager.SHOW_IMPLICIT);
+            }
+        }, 200); // Small delay to ensure the keyboard appears
 
         builder.setPositiveButton("Issue", (dialog, which) -> {
             String readerId = etReaderId.getText().toString().trim().toUpperCase();

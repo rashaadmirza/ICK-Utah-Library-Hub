@@ -9,22 +9,44 @@
     android:scrollbars="vertical"
     tools:context=".ui.SearchFragment">
 
+    <!-- Title -->
+    <TextView
+        android:id="@+id/readers_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/search"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:textStyle="bold" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="12dp"
+        android:background="@color/obsidian_shadow_t10" />
+
     <!-- Search Input -->
     <EditText
         android:id="@+id/search_input"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:autofillHints=""
-        android:background="@android:drawable/editbox_background"
+        android:background="@drawable/bg_search_input_selector"
         android:drawableStart="@drawable/search_24px"
-        android:drawableTint="#9E9E9E"
+        android:drawablePadding="12dp"
+        android:drawableTint="@color/obsidian_shadow_t10"
         android:hint="@string/search_hint"
-        android:textColorHint="#9E9E9E"
-        android:textSize="16sp"
         android:inputType="text"
         android:minHeight="48dp"
-        android:padding="8dp"
-        tools:ignore="VisualLintTextFieldSize" />
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:textColor="@color/white"
+        android:textColorHint="@color/obsidian_shadow_t10"
+        android:textSize="16sp"
+        tools:ignore="VisualLintTextFieldSize,TextContrastCheck" />
+
 
     <!-- Filter Group -->
     <LinearLayout
@@ -39,7 +61,7 @@
             android:id="@+id/filter_books"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/molten_chestnut_t10"
+            android:buttonTint="@color/molten_chestnut"
             android:text="@string/books"
             android:textColor="@color/grey"
             android:checked="true"
@@ -50,7 +72,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:buttonTint="@color/molten_chestnut_t10"
+            android:buttonTint="@color/molten_chestnut"
             android:checked="true"
             android:text="@string/readers"
             android:textColor="@color/grey" />
@@ -59,8 +81,8 @@
             android:id="@+id/filter_book_issues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/molten_chestnut_t10"
-            android:text="@string/book_issues"
+            android:buttonTint="@color/molten_chestnut"
+            android:text="@string/issues"
             android:textColor="@color/grey"
             android:checked="true"
             android:layout_marginEnd="8dp" />

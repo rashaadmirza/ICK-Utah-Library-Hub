@@ -51,7 +51,7 @@
 
         <!-- Due Date -->
         <TextView
-            android:id="@+id/issue_due_date"
+            android:id="@+id/due_date"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
