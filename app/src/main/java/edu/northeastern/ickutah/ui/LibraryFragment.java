@@ -96,10 +96,11 @@ public class LibraryFragment extends Fragment {
             String title = etTitle.getText().toString().trim();
             String author = etAuthor.getText().toString().trim();
             String publisher = etPublisher.getText().toString().trim();
-            String year = etYear.getText().toString().trim();
+            String yearStr = etYear.getText().toString().trim();
             String copiesStr = etCopies.getText().toString().trim();
 
-            if (title.isEmpty() || author.isEmpty() || publisher.isEmpty() || year.isEmpty() || copiesStr.isEmpty()) {
+            // **Validation Checks**
+            if (title.isEmpty() || author.isEmpty() || publisher.isEmpty() || yearStr.isEmpty() || copiesStr.isEmpty()) {
                 UiUtils.showToastS(requireContext(), "All fields are required!");
                 return;
             }
@@ -107,7 +108,7 @@ public class LibraryFragment extends Fragment {
             // Check if year is in the future
             int currentYear = Calendar.getInstance().get(Calendar.YEAR);
             try {
-                int yearInt = Integer.parseInt(year);
+                int yearInt = Integer.parseInt(yearStr);
                 if (yearInt > currentYear) {
                     UiUtils.showToastS(requireContext(), "Year cannot be in the future!");
                     return;
@@ -152,7 +153,7 @@ public class LibraryFragment extends Fragment {
                                     formattedTitle,
                                     formattedAuthor,
                                     formattedPublisher,
-                                    year,
+                                    yearStr,
                                     totalCopies,
                                     totalCopies
                             );

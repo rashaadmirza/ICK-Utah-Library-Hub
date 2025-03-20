@@ -3,6 +3,7 @@ package edu.northeastern.ickutah.dao;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
@@ -41,4 +42,8 @@ public interface BookDao {
     // Search Queries
     @Query("SELECT * FROM books WHERE title LIKE '%' || :query || '%' OR author LIKE '%' || :query || '%' OR publisher LIKE '%' || :query || '%' OR bookId LIKE '%' || :query || '%'")
     List<Book> searchBooks(String query);
+
+    // Advanced
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertAll(List<Book> books);
 }

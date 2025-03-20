@@ -19,6 +19,7 @@ import com.google.android.material.navigation.NavigationView;
 import java.util.Objects;
 
 import edu.northeastern.ickutah.ui.AboutFragment;
+import edu.northeastern.ickutah.ui.AdvancedFragment;
 import edu.northeastern.ickutah.ui.BookIssuesFragment;
 import edu.northeastern.ickutah.ui.HomeFragment;
 import edu.northeastern.ickutah.ui.LibraryFragment;
@@ -85,21 +86,18 @@ public class MainActivity extends AppCompatActivity {
         if (itemId == R.id.nav_home) {
             selectedFragment = new HomeFragment();
             selectedItemId = R.id.nav_home;
-        } else if (itemId == R.id.nav_readers) {
-            selectedFragment = new ReadersFragment();
-            selectedItemId = R.id.nav_readers;
         } else if (itemId == R.id.nav_library) {
             selectedFragment = new LibraryFragment();
             selectedItemId = R.id.nav_library;
+        } else if (itemId == R.id.nav_readers) {
+            selectedFragment = new ReadersFragment();
+            selectedItemId = R.id.nav_readers;
         } else if (itemId == R.id.nav_book_issues) {
             selectedFragment = new BookIssuesFragment();
             selectedItemId = R.id.nav_book_issues;
         } else if (itemId == R.id.nav_search) {
             selectedFragment = new SearchFragment();
             selectedItemId = R.id.nav_search;
-        } else if (itemId == R.id.nav_about) {
-            selectedFragment = new AboutFragment();
-            selectedItemId = null; // No selection in Bottom Nav
         } else if (itemId == R.id.nav_add_book) {
             selectedFragment = new LibraryFragment();
             selectedItemId = R.id.nav_library;
@@ -151,6 +149,12 @@ public class MainActivity extends AppCompatActivity {
                     UiUtils.showToastS(this, "Select a book");
                 }
             }, 300);
+        } else if (itemId == R.id.nav_advanced) {
+            selectedFragment = new AdvancedFragment();
+            selectedItemId = null; // No selection in Bottom Nav
+        } else if (itemId == R.id.nav_about) {
+            selectedFragment = new AboutFragment();
+            selectedItemId = null; // No selection in Bottom Nav
         }
 
         if (selectedFragment != null) {

@@ -23,23 +23,23 @@
             android:orientation="vertical"
             android:gravity="center_horizontal">
 
-            <!-- About Card -->
-            <com.google.android.material.card.MaterialCardView
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="16dp"
-                app:contentPadding="16dp"
-                app:cardCornerRadius="12dp"
-                app:cardElevation="6dp"
-                app:strokeColor="@color/golden_sandstone_s40"
-                app:strokeWidth="0dp"
-                android:backgroundTint="@color/obsidian_shadow_t10">
+<!--            &lt;!&ndash; About Card &ndash;&gt;-->
+<!--            <com.google.android.material.card.MaterialCardView-->
+<!--                android:layout_width="match_parent"-->
+<!--                android:layout_height="wrap_content"-->
+<!--                android:padding="16dp"-->
+<!--                app:contentPadding="16dp"-->
+<!--                app:cardCornerRadius="12dp"-->
+<!--                app:cardElevation="6dp"-->
+<!--                app:strokeColor="@color/golden_sandstone_s40"-->
+<!--                app:strokeWidth="0dp"-->
+<!--                android:backgroundTint="@color/obsidian_shadow_t10">-->
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:gravity="center_horizontal">
+<!--                <LinearLayout-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:orientation="vertical"-->
+<!--                    android:gravity="center_horizontal">-->
 
                     <!-- App Title -->
                     <TextView
@@ -126,10 +126,22 @@
                         android:textAlignment="center"
                         android:textColor="@color/grey"
                         android:textSize="12sp"
-                        tools:ignore="TextContrastCheck" />
+                        tools:ignore="TextContrastCheck"/>
 
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                    <!-- Submit Feedback -->
+            <TextView
+                android:id="@+id/submit_feedback"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:gravity="center"
+                android:minHeight="48dp"
+                android:text="@string/submit_feedback"
+                android:textColor="@color/linkColor"
+                android:textSize="14sp" />
+
+<!--                </LinearLayout>-->
+<!--            </com.google.android.material.card.MaterialCardView>-->
 
         </LinearLayout>
     </ScrollView>

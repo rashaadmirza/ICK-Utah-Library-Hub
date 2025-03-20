@@ -55,14 +55,14 @@ public class StringUtils {
     /**
      * Validate Email Format
      */
-    public static boolean isValidEmail(String email) {
+    public static boolean isInvalidEmail(String email) {
         return email == null || !Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
     /**
      * Validate Phone Number (10 Digits)
      */
-    public static boolean isValidPhone(String phone) {
+    public static boolean isInvalidPhone(String phone) {
         return phone == null || !phone.matches("^[0-9]{10}$"); // Accepts only 10-digit numeric values
     }
 }

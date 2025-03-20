@@ -3,6 +3,7 @@ package edu.northeastern.ickutah.dao;
 import androidx.room.Dao;
 import androidx.room.Delete;
 import androidx.room.Insert;
+import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
 import androidx.room.Update;
 import java.util.List;
@@ -31,4 +32,8 @@ public interface ReaderDao {
     // Search Queries
     @Query("SELECT * FROM readers WHERE name LIKE '%' || :query || '%' OR email LIKE '%' || :query || '%' OR phone LIKE '%' || :query || '%' OR readerId LIKE '%' || :query || '%'")
     List<Reader> searchReaders(String query);
+
+    // Advanced
+    @Insert(onConflict = OnConflictStrategy.IGNORE)
+    void insertAll(List<Reader> readers);
 }

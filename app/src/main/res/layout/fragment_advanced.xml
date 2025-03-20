@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/obsidian_shadow"
+    android:padding="16dp"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <!-- Title -->
+        <TextView
+            android:id="@+id/advanced_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/advanced"
+            android:textColor="@color/grey"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:paddingBottom="8dp"/>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/obsidian_shadow_t10"/>
+
+        <!-- Import & Export Section -->
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_import_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/import_books"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="8dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export_books"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/export_books"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/obsidian_shadow_t10"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_import_readers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/import_readers"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="8dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export_readers"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/export_readers"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/obsidian_shadow_t10"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_export_issues"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/export_book_issues"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:textColor="@color/white"
+            app:cornerRadius="8dp"
+            android:elevation="4dp"
+            android:layout_marginBottom="16dp"
+            tools:ignore="VisualLintButtonSize" />
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginBottom="16dp"
+            android:background="@color/obsidian_shadow_t10"/>
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_clear_past_returns"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:backgroundTint="@color/obsidian_shadow"
+            android:elevation="4dp"
+            android:text="@string/delete_past_issues"
+            android:textColor="#EF5350"
+            app:cornerRadius="8dp"
+            tools:ignore="VisualLintButtonSize" />
+    </LinearLayout>
+</ScrollView>

@@ -49,4 +49,8 @@ public interface BookIssueDao {
     // Search Queries
     @Query("SELECT * FROM book_issues WHERE issueId LIKE '%' || :query || '%' OR bookId LIKE '%' || :query || '%' OR readerId LIKE '%' || :query || '%'")
     List<BookIssue> searchBookIssues(String query);
+
+    // Advanced
+    @Query("DELETE FROM book_issues WHERE isReturned = 1")
+    int deleteReturnedIssues();
 }

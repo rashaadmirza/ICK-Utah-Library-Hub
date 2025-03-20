@@ -1,7 +1,9 @@
 package edu.northeastern.ickutah.ui;
 
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.net.Uri;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -48,5 +50,13 @@ public class AboutFragment extends Fragment {
 
         // Set the app version dynamically
         versionTextView.setText(String.format("Version: %s", versionName));
+
+        // Set up the feedback link
+        TextView feedbackLink = view.findViewById(R.id.submit_feedback);
+        feedbackLink.setOnClickListener(v -> {
+            Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse("https://forms.gle/Ae9Fza5vD4DaPM1v9"));
+            startActivity(intent);
+        });
+
     }
 }

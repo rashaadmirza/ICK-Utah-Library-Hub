@@ -135,12 +135,12 @@ public class ReaderDetailsFragment extends Fragment {
             }
 
             // Validate email and phone
-            if (StringUtils.isValidEmail(newEmail)) {
+            if (StringUtils.isInvalidEmail(newEmail)) {
                 UiUtils.showToastS(requireContext(), "Invalid email format!");
                 return;
             }
 
-            if (StringUtils.isValidPhone(newPhone)) {
+            if (StringUtils.isInvalidPhone(newPhone)) {
                 UiUtils.showToastS(requireContext(), "Invalid phone number! Must be 10 digits.");
                 return;
             }

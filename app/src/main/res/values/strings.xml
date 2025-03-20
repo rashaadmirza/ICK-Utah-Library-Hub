@@ -16,8 +16,6 @@
     <string name="search">Search</string>
 
     <string name="add_new_book">Add New Book</string>
-    <string name="import_books">Import Books</string>
-    <string name="export_books">Export Books</string>
     <string name="add_new_reader">Add New Reader</string>
     <string name="issue_a_book">Issue a Book</string>
 
@@ -40,6 +38,8 @@
     <string name="info_ickutah_org">Islamic Center of Kuwait in Utah\n5864 Harrison Blvd South Ogden, UT 84403\ninfo@ickutah.org\nwww.ickutah.org</string>
     <string name="legal_notice">© 2025 ICK Utah. All rights reserved.\nUnauthorized copying or distribution is prohibited.</string>
     <string name="developer_info">Developed by: Rashaad Mirza\nNortheastern University, Spring 2025\nCS 5520 Mobile App Dev\nInstructor: Dr. Gary Cantrell</string>
+    <string name="support_request">Support Request</string>break
+    <string name="submit_feedback">Submit Feedback</string>
 
     <!-- Home Fragment -->
     <string name="collection_summary">Collection Summary</string>
@@ -85,10 +85,23 @@
     <string name="returned">Returned</string>
     <string name="not_returned">Not Returned</string>
     <string name="mark_as_returned">Mark as Returned</string>
-    <string name="show_returned_issues">Show Returned Issues</string>
+    <string name="show_past_issues">Show Past Issues</string>
 
     <!-- Search Fragment -->
     <string name="search_hint">Type to search…</string>
     <string name="search_result">Search Result</string>
+
+    <!-- Advanced Fragment -->
+    <string name="advanced">Advanced</string>
+    <string name="import_books">Import Books</string>
+    <string name="export_books">Export Books</string>
+    <string name="import_readers">Import Readers</string>
+    <string name="export_readers">Export Readers</string>
+    <string name="export_book_issues">Export Book Issues</string>
+    <string name="delete_past_issues">Delete Past Issues</string>
+    <string name="manage_library">Manage Library</string>
+    <string name="manage_readers">Manage Readers</string>
+    <string name="manage_book_issues">Manage Book Issues</string>
+    <string name="danger_zone">Danger Zone</string>
 
 </resources>
