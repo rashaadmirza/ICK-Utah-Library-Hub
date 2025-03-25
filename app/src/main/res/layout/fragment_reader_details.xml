@@ -13,6 +13,59 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
+        <!-- Action Buttons Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/back"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_back_ios_new_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+
+            <!-- Edit Button -->
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/edit"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/edit_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+
+            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/delete"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/delete_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+        </LinearLayout>
+
         <!-- Reader Details Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -49,7 +102,9 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
+                    android:text="@string/name"
                     android:textColor="@color/white"
+                    android:textIsSelectable="true"
                     android:textSize="16sp"
                     android:textStyle="bold" />
 
@@ -85,8 +140,10 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="4dp"
+                    android:text="@string/email"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textIsSelectable="true"
+                    android:textSize="16sp" />
 
                 <!-- Phone -->
                 <TextView
@@ -94,62 +151,23 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:paddingBottom="16dp"
+                    android:text="@string/phone"
                     android:textColor="@color/white"
-                    android:textSize="14sp" />
+                    android:textIsSelectable="true"
+                    android:textSize="16sp" />
 
                 <!-- Current Checkouts -->
                 <TextView
                     android:id="@+id/current_checkouts"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/azure_tide"
-                    android:textSize="14sp" />
+                    android:text="@string/current_checkouts"
+                    android:textColor="@color/azure_tide_font"
+                    android:textIsSelectable="true"
+                    android:textSize="16sp" />
+
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
-
-        <!-- Action Buttons Container -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="16dp">
-
-            <!-- Back Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_back"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/golden_sandstone"
-                android:text="@string/back"
-                android:textColor="@color/black"
-                android:layout_marginEnd="8dp"
-                tools:ignore="VisualLintButtonSize" />
-
-            <!-- Edit Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_edit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/edit"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/golden_sandstone"
-                android:layout_marginEnd="8dp"
-                tools:ignore="VisualLintButtonSize" />
-
-            <!-- Delete Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_delete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/delete"
-                android:textColor="@color/black"
-                app:backgroundTint="@android:color/holo_red_light"
-                tools:ignore="VisualLintButtonSize" />
-        </LinearLayout>
 
     </LinearLayout>
 </ScrollView>

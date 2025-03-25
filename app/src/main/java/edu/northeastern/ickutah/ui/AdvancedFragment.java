@@ -409,7 +409,8 @@ public class AdvancedFragment extends Fragment {
     private void clearPastReturns() {
         new AlertDialog.Builder(requireContext())
                 .setTitle("Confirm Deletion")
-                .setMessage("This action cannot be undone. Are you sure you want to clear all past returns?")
+                .setMessage("This action cannot be undone. Are you sure you want to clear all past returns? \n\n" +
+                        "Tip: Consider Advanced -> Export Book Issues before clearing past returns.")
                 .setPositiveButton("Yes, Clear", (dialog, which) -> {
                     // Proceed with clearing past returns
                     new Thread(() -> {

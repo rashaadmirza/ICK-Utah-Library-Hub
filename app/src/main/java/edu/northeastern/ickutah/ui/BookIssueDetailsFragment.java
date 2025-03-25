@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -55,7 +56,7 @@ public class BookIssueDetailsFragment extends Fragment {
         TextView issueDateView = view.findViewById(R.id.issue_date);
         TextView dueDateView = view.findViewById(R.id.due_date);
         MaterialButton markAsReturnedButton = view.findViewById(R.id.btn_mark_as_returned);
-        MaterialButton backButton = view.findViewById(R.id.btn_back);
+        ImageButton backButton = view.findViewById(R.id.btn_back);
 
         // Retrieve Data from Bundle
         Bundle args = getArguments();

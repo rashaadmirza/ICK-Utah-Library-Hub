@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -74,9 +75,9 @@ public class BookDetailsFragment extends Fragment {
         issueButton.setOnClickListener(v -> showIssueBookDialog(book));
 
         // Handle Buttons
-        MaterialButton backButton = view.findViewById(R.id.btn_back);
-        MaterialButton editButton = view.findViewById(R.id.btn_edit);
-        MaterialButton deleteButton = view.findViewById(R.id.btn_delete);
+        ImageButton backButton = view.findViewById(R.id.btn_back);
+        ImageButton editButton = view.findViewById(R.id.btn_edit);
+        ImageButton deleteButton = view.findViewById(R.id.btn_delete);
 
         backButton.setOnClickListener(v -> requireActivity().getSupportFragmentManager().popBackStack());
         editButton.setOnClickListener(v -> showEditBookDialog(book));

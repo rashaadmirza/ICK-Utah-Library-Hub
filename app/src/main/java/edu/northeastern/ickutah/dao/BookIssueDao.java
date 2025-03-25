@@ -12,6 +12,9 @@ public interface BookIssueDao {
     @Insert
     void insert(BookIssue issue);
 
+    @Update
+    void update(BookIssue issue);
+
     @Query("SELECT * FROM book_issues")
     List<BookIssue> getAllBookIssues();
 
@@ -21,14 +24,12 @@ public interface BookIssueDao {
     @Query("SELECT * FROM book_issues WHERE issueId = :issueId LIMIT 1")
     BookIssue getIssueById(String issueId);
 
-    @Update
-    void update(BookIssue issue);
 
     @Query("SELECT COUNT(*) FROM book_issues WHERE bookId = :bookId AND isReturned = 0")
     int getIssuedCopiesCount(String bookId); // Method to count how many copies are already issued
 
     @Query("SELECT COUNT(*) FROM book_issues WHERE readerId = :readerId AND isReturned = 0")
-    int getCurrentCheckouts(String readerId);  // Method to Get Current Checkouts Count
+    int getCurrentCheckouts(String readerId);  // Method to Get Current Checkouts Count for a Reader
 
     @Query("SELECT * FROM book_issues WHERE isReturned = :showReturned OR isReturned = 0 ORDER BY issueDate DESC")
     List<BookIssue> getFilteredBookIssues(boolean showReturned);
@@ -37,11 +38,11 @@ public interface BookIssueDao {
     void updateReaderIdInBookIssues(String oldReaderId, String newReaderId);
 
     // Home Page Queries
-    @Query("SELECT COUNT(*) FROM book_issues WHERE isReturned = 0")
-    int getTotalIssuedBooks();
-
     @Query("SELECT COUNT(DISTINCT readerId) FROM book_issues WHERE isReturned = 0")
     int getCurrentlyReadingCount();
+
+    @Query("SELECT COUNT(*) FROM book_issues WHERE isReturned = 0")
+    int getTotalIssuedBooks();
 
     @Query("SELECT COUNT(*) FROM book_issues WHERE isReturned = 0 AND dueDate < :currentDate")
     int getOverdueBooksCount(long currentDate);

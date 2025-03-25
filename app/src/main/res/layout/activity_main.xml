@@ -22,8 +22,8 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/obsidian_shadow"
-            android:paddingStart="24dp"
-            android:paddingEnd="24dp"
+            android:paddingStart="32dp"
+            android:paddingEnd="32dp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -47,9 +47,7 @@
                 android:contentDescription="@string/menu"
                 android:src="@drawable/baseline_menu_24"
                 app:tint="@color/golden_sandstone_s40"
-                tools:ignore="ImageContrastCheck"
-                tools:layout_editor_absoluteX="387dp"
-                tools:layout_editor_absoluteY="20dp" />
+                tools:ignore="ImageContrastCheck" />
         </androidx.appcompat.widget.Toolbar>
 
         <!-- Fragment Container -->
@@ -69,10 +67,11 @@
             android:background="@color/obsidian_shadow_t10"
             app:itemIconTint="@color/golden_sandstone_s40"
             app:itemTextColor="@color/golden_sandstone_s40"
-            app:labelVisibilityMode="labeled"
+            app:labelVisibilityMode="unlabeled"
             app:menu="@menu/bottom_nav_menu"
             app:layout_constraintBottom_toBottomOf="parent"
-            tools:ignore="VisualLintBottomNav" />
+            tools:ignore="VisualLintBottomNav"
+            android:paddingHorizontal="16dp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <!-- Navigation Drawer -->

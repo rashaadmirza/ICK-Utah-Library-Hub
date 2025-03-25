@@ -167,9 +167,11 @@ public class MainActivity extends AppCompatActivity {
         if (selectedItemId != null) {
             bottomNavigationView.setSelectedItemId(selectedItemId);
         } else {
-            for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {  // Uncheck all items manually if the fragment is not in Bottom Nav
+            bottomNavigationView.getMenu().setGroupCheckable(0, true, false);
+            for (int i = 0; i < bottomNavigationView.getMenu().size(); i++) {
                 bottomNavigationView.getMenu().getItem(i).setChecked(false);
             }
+            bottomNavigationView.getMenu().setGroupCheckable(0, true, true);
         }
 
         drawerLayout.closeDrawer(GravityCompat.START);

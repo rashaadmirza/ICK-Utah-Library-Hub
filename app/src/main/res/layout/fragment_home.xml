@@ -110,6 +110,7 @@
 
             <!-- Titles Card -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_titles"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_rowWeight="1"
@@ -161,6 +162,7 @@
 
             <!-- Authors Card -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_authors"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_rowWeight="1"
@@ -211,6 +213,7 @@
 
             <!-- Books Card (Full Width) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_books"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_columnSpan="2"
@@ -287,6 +290,7 @@
 
             <!-- Reading Card -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_reading"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_rowWeight="1"
@@ -337,6 +341,7 @@
 
             <!-- Books Loaned Card -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_loaned"
                 android:layout_width="0dp"
                 android:layout_height="120dp"
                 android:layout_rowWeight="1"
@@ -366,7 +371,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
-                        android:text="@string/books_loaned"
+                        android:text="@string/book_loans"
                         android:textColor="@color/golden_sandstone_s40"
                         android:textSize="14sp"
                         tools:ignore="TextContrastCheck" />
@@ -387,6 +392,7 @@
 
             <!-- Overdue Loans Card (Full Width) -->
             <com.google.android.material.card.MaterialCardView
+                android:id="@+id/card_overdue"
                 android:layout_width="match_parent"
                 android:layout_height="120dp"
                 android:layout_columnSpan="2"

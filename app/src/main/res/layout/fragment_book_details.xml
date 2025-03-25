@@ -13,6 +13,59 @@
         android:orientation="vertical"
         android:gravity="center_horizontal">
 
+        <!-- Action Buttons Container -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingBottom="16dp">
+
+            <!-- Back Button -->
+            <ImageButton
+                android:id="@+id/btn_back"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/back"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/arrow_back_ios_new_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+
+            <!-- Edit Button -->
+            <ImageButton
+                android:id="@+id/btn_edit"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/edit"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/edit_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+
+            <!-- Delete Button -->
+            <ImageButton
+                android:id="@+id/btn_delete"
+                android:layout_width="0dp"
+                android:layout_height="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/border_image_button"
+                android:contentDescription="@string/delete"
+                android:padding="16dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/delete_24px"
+                app:tint="@color/golden_sandstone_s40"
+                tools:ignore="ImageContrastCheck" />
+        </LinearLayout>
+
         <!-- Book Details Card -->
         <com.google.android.material.card.MaterialCardView
             android:layout_width="match_parent"
@@ -51,7 +104,7 @@
                     android:textColor="@color/white"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="4dp" />
 
                 <!-- Book ID -->
                 <TextView
@@ -60,7 +113,7 @@
                     android:layout_height="wrap_content"
                     android:text="@string/book_id"
                     android:textColor="@color/white"
-                    android:textSize="16sp"
+                    android:textSize="14sp"
                     android:layout_marginBottom="16dp" />
 
                 <!-- Author -->
@@ -71,7 +124,7 @@
                     android:text="@string/author"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginBottom="8dp"/>
+                    android:layout_marginBottom="4dp"/>
 
                 <!-- Publisher -->
                 <TextView
@@ -81,7 +134,7 @@
                     android:text="@string/publisher"
                     android:textColor="@color/white"
                     android:textSize="16sp"
-                    android:layout_marginBottom="8dp" />
+                    android:layout_marginBottom="4dp" />
 
                 <!-- Year -->
                 <TextView
@@ -93,24 +146,41 @@
                     android:textColor="@color/white"
                     android:textSize="16sp" />
 
-                <!-- Total Copies -->
+                <!-- Section Label -->
                 <TextView
-                    android:id="@+id/book_total_copies"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginBottom="8dp"
-                    android:text="@string/total_copies"
-                    android:textColor="@color/white"
-                    android:textSize="16sp" />
+                    android:text="@string/availability"
+                    android:textColor="@color/azure_tide_font"
+                    android:textSize="14sp"
+                    android:layout_marginBottom="2dp" />
+
+                <!-- Total Copies -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/book_total_copies"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/total_copies"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+
+                    <TextView
+                        android:id="@+id/book_available_copies"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/available_copies"
+                        android:textColor="@color/white"
+                        android:textSize="16sp" />
+                </LinearLayout>
 
                 <!-- Available Copies -->
-                <TextView
-                    android:id="@+id/book_available_copies"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="@string/available_copies"
-                    android:textColor="@color/azure_tide_font"
-                    android:textSize="16sp" />
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 
@@ -121,53 +191,10 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:backgroundTint="@color/azure_tide_s20"
+            app:cornerRadius="8dp"
             android:text="@string/issue_book"
             android:textColor="@color/azure_tide_button_font"
-            tools:ignore="VisualLintButtonSize,TextContrastCheck" />
-
-        <!-- Action Buttons Container -->
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:gravity="center"
-            android:paddingTop="16dp">
-
-            <!-- Back Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_back"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:backgroundTint="@color/golden_sandstone"
-                android:text="@string/back"
-                android:textColor="@color/black"
-                android:layout_marginEnd="8dp"
-                tools:ignore="VisualLintButtonSize" />
-
-            <!-- Edit Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_edit"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/edit"
-                android:textColor="@color/black"
-                app:backgroundTint="@color/golden_sandstone"
-                android:layout_marginEnd="8dp"
-                tools:ignore="VisualLintButtonSize" />
-
-            <!-- Delete Button -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btn_delete"
-                android:layout_width="0dp"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/delete"
-                android:textColor="@color/black"
-                app:backgroundTint="@android:color/holo_red_light"
-                tools:ignore="VisualLintButtonSize" />
-        </LinearLayout>
-
+            android:elevation="6dp"
+            tools:ignore="TextContrastCheck,VisualLintButtonSize" />
     </LinearLayout>
 </ScrollView>

@@ -3,29 +3,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:background="@color/obsidian_shadow"
     android:orientation="vertical"
     android:padding="16dp"
     android:scrollbars="vertical"
     tools:context=".ui.SearchFragment">
-
-<!--    &lt;!&ndash; Title &ndash;&gt;-->
-<!--    <TextView-->
-<!--        android:id="@+id/readers_title"-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:gravity="center"-->
-<!--        android:text="@string/search"-->
-<!--        android:textColor="@color/white"-->
-<!--        android:textSize="18sp"-->
-<!--        android:textStyle="bold" />-->
-
-<!--    <View-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="1dp"-->
-<!--        android:layout_marginTop="12dp"-->
-<!--        android:layout_marginBottom="12dp"-->
-<!--        android:background="@color/obsidian_shadow_t10" />-->
 
     <!-- Search Input -->
     <EditText
@@ -55,24 +38,25 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:gravity="center"
-        android:layout_margin="4dp">
+        android:layout_marginTop="4dp"
+        android:layout_marginBottom="4dp">
 
         <CheckBox
-            android:id="@+id/filter_books"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:buttonTint="@color/molten_chestnut"
-            android:text="@string/books"
-            android:textColor="@color/grey"
-            android:checked="true"
-            android:layout_marginEnd="8dp" />
+        android:id="@+id/filter_books"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:buttonTint="@color/molten_chestnut"
+        android:text="@string/books"
+        android:textColor="@color/grey"
+        android:checked="true"
+        android:layout_marginEnd="8dp" />
 
         <CheckBox
             android:id="@+id/filter_readers"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="8dp"
-            android:buttonTint="@color/molten_chestnut"
+            app:buttonTint="@color/molten_chestnut"
             android:checked="true"
             android:text="@string/readers"
             android:textColor="@color/grey" />
@@ -81,7 +65,7 @@
             android:id="@+id/filter_book_issues"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:buttonTint="@color/molten_chestnut"
+            app:buttonTint="@color/molten_chestnut"
             android:text="@string/issues"
             android:textColor="@color/grey"
             android:checked="true"

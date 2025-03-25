@@ -33,7 +33,7 @@
     <string name="ick_utah_library_hub">ICK Utah Library Hub</string>
     <string name="version_info">Version 1.0</string>
     <string name="features">Features</string>
-    <string name="features_text"><![CDATA[Admin Dashboard\nDigital Library Records\nReader Management\nBook Issue & Return Tracking\nReal-Time Search & Filtering]]></string>
+    <string name="features_text"><![CDATA[Librarian\'s Dashboard\nDigital Library Records\nReader Management\nBook Issue & Return Tracking\nFiltered Search]]></string>
     <string name="contact_us">Contact Us</string>
     <string name="info_ickutah_org">Islamic Center of Kuwait in Utah\n5864 Harrison Blvd South Ogden, UT 84403\ninfo@ickutah.org\nwww.ickutah.org</string>
     <string name="legal_notice">© 2025 ICK Utah. All rights reserved.\nUnauthorized copying or distribution is prohibited.</string>
@@ -49,11 +49,12 @@
     <string name="authors">Authors</string>
     <string name="books">Books</string>
     <string name="book_icon">Book Icon</string>
+    <string name="currently_reading">Currently Reading</string>
 
     <string name="library_activity">Library Activity</string>
     <string name="reading">Reading</string>
     <string name="reader_icon">Reader Icon</string>
-    <string name="books_loaned">Books Loaned</string>
+    <string name="book_loans">Book Loans</string>
     <string name="overdue_loans">Overdue Loans</string>
     <string name="notification_important_icon">Notification Important Icon</string>
 
@@ -103,5 +104,7 @@
     <string name="manage_readers">Manage Readers</string>
     <string name="manage_book_issues">Manage Book Issues</string>
     <string name="danger_zone">Danger Zone</string>
+    <string name="current_checkouts">Current Checkouts</string>
+    <string name="availability">Availability</string>
 
 </resources>
