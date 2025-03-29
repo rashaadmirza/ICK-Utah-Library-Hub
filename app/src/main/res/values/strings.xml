@@ -71,8 +71,9 @@
     <string name="author">Author</string>
     <string name="publisher">Publisher</string>
     <string name="year">Year</string>
-    <string name="total_copies">Total Copies</string>
-    <string name="available_copies">Available Copies</string>
+    <string name="availability">Availability</string>
+    <string name="total_copies">Owned</string>
+    <string name="available_copies">Available</string>
 
     <!-- Book Issues -->
     <string name="book_issues_icon">Book Issues Icon</string>
@@ -85,6 +86,7 @@
     <string name="returned_label">Returned:\u0020</string>
     <string name="returned">Returned</string>
     <string name="not_returned">Not Returned</string>
+    <string name="overdue">Overdue</string>
     <string name="mark_as_returned">Mark as Returned</string>
     <string name="show_past_issues">Show Past Issues</string>
 
@@ -105,6 +107,5 @@
     <string name="manage_book_issues">Manage Book Issues</string>
     <string name="danger_zone">Danger Zone</string>
     <string name="current_checkouts">Current Checkouts</string>
-    <string name="availability">Availability</string>
 
 </resources>

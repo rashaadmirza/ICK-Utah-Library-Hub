@@ -50,8 +50,15 @@ public class BookIssuesAdapter extends RecyclerView.Adapter<BookIssuesAdapter.Vi
             holder.status.setText(R.string.returned);
             holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.successColor));
         } else {
-            holder.status.setText(R.string.not_returned);
-            holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.errorColor));
+            long currentTime = System.currentTimeMillis();
+            if (issue.getDueDate().getTime() < currentTime) {
+                // Book is overdue
+                holder.status.setText(R.string.overdue);
+                holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.errorColor));
+            } else {
+                holder.status.setText(R.string.not_returned);
+                holder.status.setTextColor(ContextCompat.getColor(holder.itemView.getContext(), R.color.warningColor));
+            }
         }
 
         // Adjust bottom margin dynamically

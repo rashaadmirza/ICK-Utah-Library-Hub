@@ -180,7 +180,6 @@
                         android:textSize="16sp" />
                 </LinearLayout>
 
-                <!-- Available Copies -->
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
 

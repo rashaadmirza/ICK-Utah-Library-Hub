@@ -117,8 +117,18 @@ public class BookIssueDetailsFragment extends Fragment {
             markAsReturnedButton.setVisibility(View.GONE); // Hide button if already returned
         } else {
             returnDateView.setVisibility(View.GONE); // Hide return date if not returned
-            statusView.setText(R.string.not_returned);
-            statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.errorColor));
+
+            long currentTime = System.currentTimeMillis();
+            if (bookIssue.getDueDate().getTime() < currentTime) {
+                // Overdue
+                statusView.setText(R.string.overdue);
+                statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.errorColor));
+            } else {
+                // Not yet returned but still within due date
+                statusView.setText(R.string.not_returned);
+                statusView.setTextColor(ContextCompat.getColor(requireContext(), R.color.warningColor));
+            }
+
             markAsReturnedButton.setVisibility(View.VISIBLE); // Show button if not returned
         }
     }

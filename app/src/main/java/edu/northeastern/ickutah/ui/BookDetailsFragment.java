@@ -65,8 +65,8 @@ public class BookDetailsFragment extends Fragment {
                 authorView.setText(String.format("Author: %s", book.getAuthor()));
                 publisherView.setText(String.format("Publisher: %s", book.getPublisher()));
                 yearView.setText(String.format("Year: %s", book.getYear()));
-                totalCopiesView.setText(MessageFormat.format("Total copies: {0}", book.getTotalCopies()));
-                availableCopiesView.setText(MessageFormat.format("Available copies: {0}", book.getAvailableCopies()));
+                totalCopiesView.setText(MessageFormat.format("Owned: {0}", book.getTotalCopies()));
+                availableCopiesView.setText(MessageFormat.format("Available: {0}", book.getAvailableCopies()));
             }
         }
 
@@ -113,8 +113,8 @@ public class BookDetailsFragment extends Fragment {
                 authorView.setText(String.format("Author: %s", book.getAuthor()));
                 publisherView.setText(String.format("Publisher: %s", book.getPublisher()));
                 yearView.setText(String.format("Year: %s", book.getYear()));
-                totalCopiesView.setText(String.format("Total copies: %d", book.getTotalCopies()));
-                availableCopiesView.setText(String.format("Available copies: %d", availableCopies));
+                totalCopiesView.setText(String.format("Owned: %d", book.getTotalCopies()));
+                availableCopiesView.setText(String.format("Available: %d", availableCopies));
             });
         }).start();
     }
