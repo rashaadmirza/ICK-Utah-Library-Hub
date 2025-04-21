@@ -2,6 +2,8 @@
 
 The **ICK Utah Library Hub** is an Android application designed for the library administration at the [Islamic Center of Kuwait (ICK) in Utah](https://ickutah.org/). The app enables efficient management of books, readers, and issue tracking through an intuitive mobile interface. Developed using Java, Room (SQLite), and Material Design Components, the project aims to digitize and streamline library operations, ensuring data integrity and user-friendly management.
 
+**[View Final Project Report](REPORT.md)**
+
 ---
 
 ## Features
