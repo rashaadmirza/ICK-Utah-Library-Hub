@@ -18,13 +18,13 @@ import com.google.android.material.navigation.NavigationView;
 
 import java.util.Objects;
 
-import edu.northeastern.ickutah.ui.AboutFragment;
-import edu.northeastern.ickutah.ui.AdvancedFragment;
-import edu.northeastern.ickutah.ui.BookIssuesFragment;
-import edu.northeastern.ickutah.ui.HomeFragment;
-import edu.northeastern.ickutah.ui.LibraryFragment;
-import edu.northeastern.ickutah.ui.ReadersFragment;
-import edu.northeastern.ickutah.ui.SearchFragment;
+import edu.northeastern.ickutah.ui.fragments.AboutFragment;
+import edu.northeastern.ickutah.ui.fragments.AdvancedFragment;
+import edu.northeastern.ickutah.ui.fragments.BookIssuesFragment;
+import edu.northeastern.ickutah.ui.fragments.HomeFragment;
+import edu.northeastern.ickutah.ui.fragments.LibraryFragment;
+import edu.northeastern.ickutah.ui.fragments.ReadersFragment;
+import edu.northeastern.ickutah.ui.fragments.SearchFragment;
 import edu.northeastern.ickutah.utils.UiUtils;
 
 public class MainActivity extends AppCompatActivity {
